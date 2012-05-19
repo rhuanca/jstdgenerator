@@ -1,0 +1,32 @@
+#JsTestDriver configuration file, FOR PATCHED JSTESTDRIVER (to allow '**' globing) (DEV)
+#@author evillegas
+#problems? doubts? more info in http://code.google.com/p/js-test-driver/
+
+# SERVE section
+# All the *potentially* required files to run unit tests (won't be executed or loaded until needed). Add more if needed.
+# Notes:
+# -Doing directory/*.xxx on directories without files will produce an error.
+# -JsTestDriver server has to be restarted on changes
+serve:
+  - app/**.*
+  - data/**.* #Conceptually, this shouldn't be part of unit tests. Put just in case.
+  #- extjs-4.1.0/src/**.*  #Needed if ext-all loaded?
+
+#LOAD section
+#This files will be loaded and executed in order. This section won't usually change
+load:
+  #js dependencies
+  - extjs-4.1.0/ext-all-debug.js   #update this with your local ext if necessary
+  - app-test/lib/jquery-1.7.2.min.js
+  - app-test/lib/jasmine-1.1.0/jasmine.js
+  - app-test/lib/jstd/JasmineAdapter.js
+  #loader
+  - app-test/app-test-jstd.js
+
+
+#TEST section
+#All the unit tests.
+test:
+  - app-test/specs/accordion/AccordionPanel.spec.js
+  - app-test/specs/visualprogress.spec.js
+  - app-test/specs/emergencyappointment.spec.js
